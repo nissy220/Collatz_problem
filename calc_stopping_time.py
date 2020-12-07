@@ -33,13 +33,14 @@ def calc_stopping_time(ns, ne, t_range):
             t_max=count
     return hist, t_max     
 
-#approximation of the erfc function
+#approximation of the erfcx function
 def erfcx(x):
     a=1.98
     b=1.135
     return (1-np.exp(-a*x))/(b * np.sqrt(np.pi)*x)
-            
-def integral_dist(n, T):
+
+#The function that approximates the stopping time distribution by the Brownian motion model           
+def phi(n, T):
     C=np.sqrt(2)*sigma*s*(-s/np.sqrt(beta)-0.5*(3*s-v)/np.sqrt(alpha))
     D=-np.sqrt(2)*sigma*s*(s/np.sqrt(beta)-0.5*(3*s-v)/np.sqrt(alpha))
     
@@ -51,14 +52,17 @@ def integral_dist(n, T):
       
     return (C*erfcx(x)+D*erfcx(y))*np.exp(g)   
 
-def total_dist(ns, ne, t_range):
+#Estimate the stopping time distribution for the numbers from ns to ne
+def estimate_distribution(ns, ne, t_range):
     T=np.arange(1, t_range)
-    return integral_dist(ne, T) - integral_dist(ns, T)
+    return phi(ne, T) - phi(ns, T)
 
-def calc_max_stopping_time(n, t_range): 
-    total_hist=total_dist(1, n, t_range ) 
+#Estimate the max of stopping time by the function phi for the numbers from 1 to n
+def estimate_max_stopping_time(n, t_range): 
+    total_hist=estimate_distribution(1, n, t_range ) 
     return np.argmin(np.abs(total_hist[30:]-1))    
-    
+
+#Inverse Gaussian distribution 
 #def dist(n, T):
 #    x=np.log(n)/sigma
 #    t=(x+2*s*T)/(3*s-v)
@@ -72,23 +76,27 @@ t_range=500
 ns=1
 ne=10**6
 
-total_hist=total_dist(ns, ne, t_range) 
+total_hist=estimate_distribution(ns, ne, t_range) 
 
 hist, t_max=calc_stopping_time(ns, ne, t_range)
 ave_range=5
 filter=np.ones(ave_range) / ave_range
 hist=np.convolve(hist,filter, mode='same')
-plt.plot(np.arange(1, t_range), hist, label='collatz sequence')
-plt.plot(np.arange(1, t_range),total_hist, label='prediction')
+plt.plot(np.arange(1, t_range), hist, label='Collatz sequence ')
+plt.plot(np.arange(1, t_range),total_hist, label='Brownian motion model')
 plt.xlabel('stopping time')
 plt.ylabel('count')
-plt.title('Histgram of the stopping time from ' + str(ns) + ' to ' + str(ne))
+plt.title('Stopping time distribution from' + "{:10.1e}".format(ns) + ' to' + "{:10.1e}".format(ne))
 plt.legend()
 plt.show()
 
-pred_t_max=calc_max_stopping_time(ne, t_range)
-print('max of stopping time =', t_max)
-print('prediction of max of stopping time =', pred_t_max)
+t_range=3000
+
+for i in range(4, 18):
+    n=10**i
+    pred_t_max=estimate_max_stopping_time(n, t_range)
+#    print('max of stopping time =', t_max)
+    print('less than'+ "{:10.1e}".format(n) + ', prediction of max of stopping time =', pred_t_max, 'steps')
 
 
     
