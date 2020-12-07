@@ -22,6 +22,7 @@ def collatz(n):
             n = 3 * n + 1
         count+=1   
     return count
+
 def calc_stopping_time(ns, ne, t_range):
     hist=np.zeros(t_range - 1)
     t_max=0
