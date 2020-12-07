@@ -60,8 +60,8 @@ def estimate_distribution(ns, ne, t_range):
 
 #Estimate the max of stopping time for the numbers from 1 to n
 def estimate_max_stopping_time(n, t_range): 
-    total_hist=estimate_distribution(1, n, t_range ) 
-    return np.argmin(np.abs(total_hist[30:]-1))    
+    est_hist=estimate_distribution(1, n, t_range ) 
+    return np.argmin(np.abs(est_hist[30:]-1))    
 
 #Inverse Gaussian distribution 
 #def dist(n, T):
@@ -74,20 +74,23 @@ def estimate_max_stopping_time(n, t_range):
 #range of the stopping time
 t_range=500
 
+#range of numbers
 ns=1
-ne=10**6
+ne=10**5
 
 #Calculate and estimate the stopping time distribution 
-total_hist=estimate_distribution(ns, ne, t_range) 
+est_hist=estimate_distribution(ns, ne, t_range) 
 
 hist, t_max=calc_stopping_time(ns, ne, t_range)
 ave_range=5
+#Smooth the histgram
 filter=np.ones(ave_range) / ave_range
 hist=np.convolve(hist,filter, mode='same')
+
 plt.plot(np.arange(1, t_range), hist, label='Collatz sequence ')
-plt.plot(np.arange(1, t_range),total_hist, label='Brownian motion model')
+plt.plot(np.arange(1, t_range),est_hist, label='Brownian motion model')
 plt.xlabel('stopping time')
-plt.ylabel('count')
+plt.ylabel('counts')
 plt.title('Stopping time distribution from' + "{:10.1e}".format(ns) + ' to' + "{:10.1e}".format(ne))
 plt.legend()
 plt.show()
