@@ -1,7 +1,7 @@
 """
 Created on Sat Dec  5 21:39:37 2020
 
-@author: Nishiyama
+@author: T.Nishiyama
 """
 import numpy as np
 import matplotlib.pyplot as plt
@@ -33,13 +33,13 @@ def calc_stopping_time(ns, ne, t_range):
             t_max=count
     return hist, t_max     
 
-#approximation of the erfcx function
+#Approximation of the erfcx function
 def erfcx(x):
     a=1.98
     b=1.135
     return (1-np.exp(-a*x))/(b * np.sqrt(np.pi)*x)
 
-#The function that approximates the stopping time distribution by the Brownian motion model           
+#Function that approximates the stopping time distribution by the Brownian motion model           
 def phi(n, T):
     C=np.sqrt(2)*sigma*s*(-s/np.sqrt(beta)-0.5*(3*s-v)/np.sqrt(alpha))
     D=-np.sqrt(2)*sigma*s*(s/np.sqrt(beta)-0.5*(3*s-v)/np.sqrt(alpha))
@@ -57,7 +57,7 @@ def estimate_distribution(ns, ne, t_range):
     T=np.arange(1, t_range)
     return phi(ne, T) - phi(ns, T)
 
-#Estimate the max of stopping time by the function phi for the numbers from 1 to n
+#Estimate the max of stopping time for the numbers from 1 to n
 def estimate_max_stopping_time(n, t_range): 
     total_hist=estimate_distribution(1, n, t_range ) 
     return np.argmin(np.abs(total_hist[30:]-1))    
@@ -72,10 +72,11 @@ def estimate_max_stopping_time(n, t_range):
 
 #range of the stopping time
 t_range=500
-#start number
+
 ns=1
 ne=10**6
 
+#Calculate and estimate the stopping time distribution 
 total_hist=estimate_distribution(ns, ne, t_range) 
 
 hist, t_max=calc_stopping_time(ns, ne, t_range)
@@ -92,6 +93,7 @@ plt.show()
 
 t_range=3000
 
+#Estimate the max of the stopping time
 for i in range(4, 18):
     n=10**i
     pred_t_max=estimate_max_stopping_time(n, t_range)
