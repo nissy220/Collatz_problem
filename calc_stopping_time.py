@@ -40,7 +40,7 @@ def erfcx(x):
     b=1.135
     return (1-np.exp(-a*x))/(b * np.sqrt(np.pi)*x)
 
-#Function that approximates the toatl stopping time distribution by the Brownian motion          
+#Function that approximates the total stopping time distribution by the Brownian motion          
 def phi(n, T):
     C=-s/np.sqrt(beta)-0.5*(3*s-v)/np.sqrt(alpha)
     D=-s/np.sqrt(beta)+0.5*(3*s-v)/np.sqrt(alpha)
