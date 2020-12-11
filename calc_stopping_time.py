@@ -53,12 +53,12 @@ def phi(n, T):
       
     return np.sqrt(2)*sigma*s*(C*erfcx(X)+D*erfcx(Y))*np.exp(g)   
 
-#Estimate the toatl stopping time distribution for the numbers from ns to ne
+#Estimate the total stopping time distribution for the numbers from ns to ne
 def estimate_distribution(ns, ne, t_range):
     T=np.arange(1, t_range)
     return phi(ne, T) - phi(ns, T)
 
-#Estimate the max of toatl stopping time for the numbers from 1 to n
+#Estimate the max of total stopping time for the numbers from 1 to n
 def estimate_max_stopping_time(n, t_range): 
     est_hist=estimate_distribution(1, n, t_range ) 
     return np.argmin(np.abs(est_hist[30:]-1))    
@@ -71,14 +71,14 @@ def estimate_max_stopping_time(n, t_range):
 #    
 #
 
-#range of the toatl stopping time
+#range of the total stopping time
 t_range=500
 
 #range of numbers
 ns=1
 ne=10**5
 
-#Calculate and estimate the toatl stopping time distribution 
+#Calculate and estimate the total stopping time distribution 
 est_hist=estimate_distribution(ns, ne, t_range) 
 
 hist, t_max=calc_stopping_time(ns, ne, t_range)
