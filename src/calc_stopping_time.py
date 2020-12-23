@@ -90,7 +90,7 @@ re=1
 ps=0
 pe=5
 
-#Calculate and estimate the total stopping time distribution 
+#Estimate the total stopping time distribution 
 est_hist=estimate_distribution(rs, ps, re, pe, t_range) 
 #est_hist2=estimate_density(re, pe, t_range) * re*10**pe
 
@@ -110,20 +110,31 @@ plt.title('Total stopping time from' + "{:10.1e}".format(rs*10**ps) + ' to' + "{
 plt.legend()
 plt.show()
 
-t_range2=4500
-#List of the total the longest total stopping time
-#https://en.wikipedia.org/wiki/Collatz_conjecture
-#http://www.ericr.nl/wondrous/delrecs.html
+#Estimate the max of the total stopping time
+t_range2=2500
 
+#List of max of the total stopping time
+collatz_t_max = np.array([0, 19, 118, 178, 261, 350, 524, 685, 949, 986, 1132, 1228,
+                 1348, 1563, 1662, 1862, 1958, 2091, 2283])
 
-##Estimate the longest total stopping time
+##Estimate the max of the total stopping time
+power_range=18
+pred_t_max=np.zeros(power_range + 1)
+for i in range(1, power_range + 1):
+    pred_t_max[i]=estimate_max_stopping_time(1, i, t_range2)
 
-for i in range(1, 40):
-    pred_t_max=estimate_max_stopping_time(1, i, t_range2)
-#    pred_t_max2=estimate_max_stopping_time2(1, i, t_range2)
-#    print(i, pred_t_max)
-    print('less than'+ "{:10.1e}".format(10**i) + ', prediction of max of total stopping time =', pred_t_max, 'steps')
+plt.plot(np.arange(len(collatz_t_max)), collatz_t_max, 'o', label='Collatz sequences') 
+plt.plot(np.arange(power_range + 1), pred_t_max, 'o', label='Brownian motion model')  
+ 
+plt.xlabel('log_10(n)')   
+plt.ylabel('Max of total stopping time')
+plt.legend()
+plt.show()
 
-
+error=np.zeros(len(collatz_t_max))
+error[1:]=np.abs(pred_t_max[1:len(collatz_t_max)]-collatz_t_max[1:]) / collatz_t_max[1:]
+plt.plot(np.arange(2,len(collatz_t_max)), error[2:], 'o')             
+plt.xlabel('log_10(n)')   
+plt.ylabel('Error')            
     
-            
+         
