@@ -14,7 +14,7 @@ The max of the total stopping time can be estimated by using the distribution fu
 |src        | A Code implementing a distribution function.|
 
 The results folder containts 
-- the total stopping time distribution of the Collatz sequences (3-point moving average) for numbers in [1, 10^6]] and estimation results.
+- the total stopping time distribution of the Collatz sequences (3-point moving average) for numbers in [1, 10^6] and estimation results.
 - the max of the total stopping time of the Collatz sequences [4] and the predictions for numbers less than 10^40.
 
 ## License
