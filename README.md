@@ -7,7 +7,8 @@ The Collatz function is
 
 We derived this distribution function in a similar approach to works [2][3].
 The max of the total stopping time can be estimated by using the distribution function.
-##File structure
+
+## File structure
 |folder name|explanation                         |
 |:--        |:--                          |
 |doc        | Mathematical details on this approach.  |
