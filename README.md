@@ -21,8 +21,8 @@ The results folder also containts
 This project is licensed under the terms of the [MIT license](LICENSE.md).
 
 ## References
--  [1] Lagarias, Jeffrey C., ed. The ultimate challenge: The 3x+ 1 problem. American Mathematical Soc., 2010.
--  [2] Kontorovich, Alex V., and Jeffrey C. Lagarias. "Stochastic Models for the 3x+ 1 and 5x+ 1 Problems." arXiv preprint arXiv:0910.1944 (2009).
--  [3] Borovkov, Konstantin Aleksandrovich, and Dietmar Pfeifer. "Estimates for the Syracuse problem via a probabilistic model." Theory of Probability & Its Applications 45.2 (2001): 300-310.
+-  [1] Lagarias, Jeffrey C., ed. *The ultimate challenge: The 3x+ 1 problem*. American Mathematical Soc., 2010.
+-  [2] Kontorovich, Alex V., and Jeffrey C. Lagarias. "Stochastic Models for the 3x+ 1 and 5x+ 1 Problems." *arXiv preprint arXiv:0910.1944 (2009).*
+-  [3] Borovkov, Konstantin Aleksandrovich, and Dietmar Pfeifer. "Estimates for the Syracuse problem via a probabilistic model." *Theory of Probability & Its Applications* 45.2 (2001): 300-310.
 -  [4] Roosendaal, Eric. "3x+1 Delay Records". http://www.ericr.nl/wondrous/delrecs.html
 
