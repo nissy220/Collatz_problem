@@ -1,7 +1,7 @@
 # A function to estimate the total stopping time distribution of the Collatz problem based on the stochastic approach.
 
 ## Details
-This repository contains code implementing a function that approximate the total stopping time distribution for the Collatz function [1] based on the Brownian motion.
+This repository contains a code implementing a function that approximate the total stopping time distribution for the Collatz function [1] based on the Brownian motion.
 The Collatz function is 
 [tex: f(n)=\frac n2 \quad if n 0]
 
@@ -12,12 +12,13 @@ The max of the total stopping time can be estimated by using the distribution fu
 |folder name|explanation                         |
 |:--        |:--                          |
 |doc        | Mathematical details on this approach.  |
-|results    |Comparison results of Collatz sequences and estimation by using the distribution function|
+|results    |Comparison results of the Collatz sequences and estimation by the distribution function|
 |src        | A Code implementing a distribution function.|
 
-The results folder also containts
--comparison of the total stopping time distribution of the Collatz sequences (3-point moving average) and estimation results for numbers less than 10^6.
--comparison result the max of the total stopping time of the Collatz sequences [4] and the prediction results less than 10^40.
+The results folder containts 
+- the total stopping time distribution of the Collatz sequences (3-point moving average) for numbers in [tex:[1, 10^6]] and estimation results.
+- the max of the total stopping time of the Collatz sequences [4] and the predictions for numbers less than 10^40.
+
 ## License
 This project is licensed under the terms of the [MIT license](LICENSE.md).
 
