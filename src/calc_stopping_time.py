@@ -51,7 +51,6 @@ def log_phi(r, p, T):
     Y=-np.sqrt(alpha*t)+T*np.sqrt(beta/t)
     Z=-alpha*t-beta*T**2/t
     g=(6*s**2-2*sigma*s)*T+Z
-      
     return g + np.log(np.sqrt(2)*sigma*s) + np.log(C*erfcx(X)+D*erfcx(Y))   
 
 #Estimate the total stopping time distribution for numbers in [ns=rs*10**ps, ne=re*10**pe].
