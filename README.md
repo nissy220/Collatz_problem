@@ -4,7 +4,7 @@
 This repository contains a code implementing a function that approximate the total stopping time distribution of the Collatz (3x+1) problem [1] based on the Brownian motion model.
 
 We derived this distribution function in a similar approach described in [2], [3].
-The max of the total stopping time can be estimated by using the distribution function.
+The longest total stopping time can be estimated by using the distribution function.
 
 ## File structure
 |folder name|explanation                         |
@@ -15,7 +15,7 @@ The max of the total stopping time can be estimated by using the distribution fu
 
 The results folder containts 
 - the total stopping time distribution of the Collatz sequences (3-point moving average) for numbers in [1, 10^6] and estimation results.
-- the max of the total stopping time of the Collatz sequences [4] and the predictions for numbers less than 10^50.
+- the longest total stopping time of the Collatz sequences [4] and predictions of it for numbers less than 10^50.
 
 ## License
 This project is licensed under the terms of the [MIT license](LICENSE.md).
