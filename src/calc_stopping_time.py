@@ -59,7 +59,7 @@ def estimate_distribution(rs, ps, re, pe, t_range):
     ps = max(ps, 1)
     return np.exp(log_phi(re, pe, T)) - np.exp(log_phi(rs, ps, T))
 
-#Estimate the max of total stopping time for the numbers in [1, n=r*10**p].
+#Estimate the longest total stopping time for the numbers in [1, n=r*10**p].
 def estimate_max_stopping_time(r, p, t_range): 
     T=np.arange(t_range)
     log_count=log_phi(r, p, T)
@@ -109,15 +109,15 @@ plt.title('Total stopping time from' + "{:10.1e}".format(rs*10**ps) + ' to' + "{
 plt.legend()
 plt.show()
 
-#Estimate the max of the total stopping time
-t_range2=7500
+#Estimate the longest total stopping time
+t_range2=2500
 
-#List of max of the total stopping time
+#List of the longest total stopping time
 collatz_t_max = np.array([19, 118, 178, 261, 350, 524, 685, 949, 986, 1132, 1228,
                  1348, 1563, 1662, 1862, 1958, 2091, 2283])
 
-##Estimate the max of the total stopping time
-power_range=50
+##Estimate the longest total stopping time
+power_range=18
 pred_t_max=np.zeros(power_range)
 for i in range(power_range):
     pred_t_max[i]=estimate_max_stopping_time(1, i+1, t_range2)
@@ -126,7 +126,7 @@ plt.plot(np.arange(1, len(collatz_t_max) + 1), collatz_t_max, 'o', label='Collat
 plt.plot(np.arange(1, power_range + 1), pred_t_max, 'o', label='Brownian motion model')  
  
 plt.xlabel('$log_{10}n$')   
-plt.ylabel('Max of total stopping time')
+plt.ylabel('Longest total stopping time')
 plt.legend()
 plt.show()
 
