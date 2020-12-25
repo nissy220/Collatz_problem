@@ -1,7 +1,7 @@
 # Function to estimate the total stopping time distribution of the Collatz problem based on the stochastic approach.
 
 ## Details
-This repository contains a code implementing a function that approximate the total stopping time distribution of the Collatz (3x+1) problem [1] based on the Brownian motion model.
+This repository contains a code implementing a function that approximates the total stopping time distribution of the Collatz (3x+1) problem [1] based on the Brownian motion model.
 
 We derived this distribution function in a similar approach described in [2], [3].
 The longest total stopping time can be estimated by using the distribution function.
