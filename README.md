@@ -10,7 +10,7 @@ The longest total stopping time can be estimated by using the distribution funct
 |folder name|explanation                         |
 |:--        |:--                          |
 |doc        | Mathematical details on this approach.  |
-|results    |Comparison results of the Collatz sequences and estimation by the distribution function|
+|results    |Comparison results of the Collatz sequences and estimation by the distribution function.|
 |src        | A Code implementing the distribution function.|
 
 The results folder containts 
